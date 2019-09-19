@@ -37,25 +37,43 @@
                     console.log('That isn\'t part of the game...');
             };
 
+            console.log(computerSelection);
+
             if (playerSelection === 'rock') {
                 if (computerSelection === 'rock') {
-                    console.log('tie')
-                                        
+                    console.log('tie')                   
                 } else if (computerSelection === 'scissors') {
                     console.log('win')
-                    
                 } else {
+                    console.log('lose')                     
+                }
+            }
+
+            if (playerSelection === 'scissors') {
+                if (computerSelection === 'rock') {
                     console.log('lose')
-                                        
+                } else if (computerSelection === 'scissors') {
+                    console.log('tie')
+                } else {
+                    console.log('win')
+                }
+            }
+
+            if (playerSelection === 'paper') {
+                if (computerSelection === 'rock') {
+                    console.log('win')
+                } else if (computerSelection === ' scissors') {
+                    console.log('lose') 
+                } else {
+                    console.log('tie')
                 }
             }
         }
         
-
         let playerSelection = prompt('value').toLowerCase();
         let computerSelection = computerPlay();
         (playRound(playerSelection, computerSelection));
-        console.log(computerSelection);
+
     </script>
 </body>
 
