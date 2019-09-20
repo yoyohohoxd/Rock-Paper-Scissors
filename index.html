@@ -7,20 +7,33 @@
 </head>
 <body>
     <p>Ay ay seamen and sailors, we have a challenger on deck. Load the canons and pick yar weapons!</p>
+    <br>
     <button id='gameBtn' onclick="game()">Play a round!</button>
+    <br>
+    <div class="score">
+    <p id="playerScore">0</p>
+    <p>:</p>
+    <p id="computerScore">0</p>
+    </div>
 
-    <script>      
+    <script>
+
+        let playerScore = document.getElementById("playerScore").innerHTML = 0;
+
+        let computerScore = document.getElementById("computerScore").innerHTML = 0;
+
+
         function game() {
             function computerPlay() {
                 switch (Math.floor(Math.random() * 3)){
                     case 0:
-                        return 'Advesary chose rock';
+                        return 'rock';
                         break;
                     case 1:
-                        return 'Advesary chose scissors';
+                        return 'scissors';
                         break;
                     case 2:
-                        return 'Advesary chose paper';
+                        return 'paper';
                         break;
                 };
             }
@@ -39,45 +52,55 @@
                         break;
                     default:
                         console.log('Stick to the rules, matey!');
-                };
+                }
 
                 console.log(computerSelection);
 
                 if (playerSelection === 'rock') {
                     if (computerSelection === 'rock') {
-                        console.log('Tis a tie. Awkward.')                   
+                        console.log('Tis a tie. Awkward.')
+                        return 'Tie';                   
                     } else if (computerSelection === 'scissors') {
                         console.log('You won! Eat grapes and drink wine, champ!')
+                        return 'Win';
                     } else {
-                        console.log('You lost! On the plank yaaar go!')                     
+                        console.log('You lost! On the plank yaaar go!')
+                        return 'Lost';                    
                     }
                 }
 
                 if (playerSelection === 'scissors') {
                     if (computerSelection === 'rock') {
                         console.log('You lost! On the plank yaaar go!')
+                        return 'Lost';
                     } else if (computerSelection === 'scissors') {
                         console.log('Tis a tie. Awkward.')
+                        return 'Tie';
                     } else {
                         console.log('You won! Eat grapes and drink wine, champ!')
+                        return 'Win';
                     }
                 }
 
                 if (playerSelection === 'paper') {
                     if (computerSelection === 'rock') {
                         console.log('You won! Eat grapes and drink wine, champ!')
+                        return 'Win'
                     } else if (computerSelection === 'scissors') {
-                        console.log('You lost! On the plank yaaar go!') 
+                        console.log('You lost! On the plank yaaar go!')
+                        return 'Lost'
                     } else {
                         console.log('Tis a tie. Awkward.')
+                        return 'Tie';
                     }
                 }
             }
             
             let playerSelection = prompt('Pick ya weapon, raah! Rock, paper, or scissors, ye\' say').toLowerCase();
             let computerSelection = computerPlay();
-            (playRound(playerSelection, computerSelection));
-        }      
+            console.log((playRound(playerSelection, computerSelection)));
+
+        }
 
     </script>
 </body>
