@@ -3,76 +3,81 @@
 <head>
     <title>Rock, Paper, and Scissors</title>
     <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
+    <p>Ay ay seamen and sailors, we have a challenger on deck. Load the canons and pick yar weapons!</p>
+    <button id='gameBtn' onclick="game()">Play a round!</button>
+
     <script>      
+        function game() {
+            function computerPlay() {
+                switch (Math.floor(Math.random() * 3)){
+                    case 0:
+                        return 'Advesary chose rock';
+                        break;
+                    case 1:
+                        return 'Advesary chose scissors';
+                        break;
+                    case 2:
+                        return 'Advesary chose paper';
+                        break;
+                };
+            }
+
+            function playRound (playerSelection, computerSelection) {
+                
+                switch(playerSelection) {
+                    case 'rock':
+                        console.log('You chose a rock');
+                        break;
+                    case 'scissors':
+                        console.log('You chose the scissors');
+                        break;
+                    case 'paper':
+                        console.log('You chose the paper');
+                        break;
+                    default:
+                        console.log('Stick to the rules, matey!');
+                };
+
+                console.log(computerSelection);
+
+                if (playerSelection === 'rock') {
+                    if (computerSelection === 'rock') {
+                        console.log('Tis a tie. Awkward.')                   
+                    } else if (computerSelection === 'scissors') {
+                        console.log('You won! Eat grapes and drink wine, champ!')
+                    } else {
+                        console.log('You lost! On the plank yaaar go!')                     
+                    }
+                }
+
+                if (playerSelection === 'scissors') {
+                    if (computerSelection === 'rock') {
+                        console.log('You lost! On the plank yaaar go!')
+                    } else if (computerSelection === 'scissors') {
+                        console.log('Tis a tie. Awkward.')
+                    } else {
+                        console.log('You won! Eat grapes and drink wine, champ!')
+                    }
+                }
+
+                if (playerSelection === 'paper') {
+                    if (computerSelection === 'rock') {
+                        console.log('You won! Eat grapes and drink wine, champ!')
+                    } else if (computerSelection === 'scissors') {
+                        console.log('You lost! On the plank yaaar go!') 
+                    } else {
+                        console.log('Tis a tie. Awkward.')
+                    }
+                }
+            }
             
-        function computerPlay() {
-            switch (Math.floor(Math.random() * 3)){
-                case 0:
-                    return 'rock';
-                    break;
-                case 1:
-                    return 'scissors';
-                    break;
-                case 2:
-                    return 'paper';
-                    break;
-            };
-        }
-
-        function playRound (playerSelection, computerSelection) {
-            
-            switch(playerSelection) {
-                case 'rock':
-                    console.log('you chose rock');
-                    break;
-                case 'scissors':
-                    console.log('you chose scissors');
-                    break;
-                case 'paper':
-                    console.log('you chose paper');
-                    break;
-                default:
-                    console.log('That isn\'t part of the game...');
-            };
-
-            console.log(computerSelection);
-
-            if (playerSelection === 'rock') {
-                if (computerSelection === 'rock') {
-                    console.log('tie')                   
-                } else if (computerSelection === 'scissors') {
-                    console.log('win')
-                } else {
-                    console.log('lose')                     
-                }
-            }
-
-            if (playerSelection === 'scissors') {
-                if (computerSelection === 'rock') {
-                    console.log('lose')
-                } else if (computerSelection === 'scissors') {
-                    console.log('tie')
-                } else {
-                    console.log('win')
-                }
-            }
-
-            if (playerSelection === 'paper') {
-                if (computerSelection === 'rock') {
-                    console.log('win')
-                } else if (computerSelection === ' scissors') {
-                    console.log('lose') 
-                } else {
-                    console.log('tie')
-                }
-            }
-        }
-        
-        let playerSelection = prompt('value').toLowerCase();
-        let computerSelection = computerPlay();
-        (playRound(playerSelection, computerSelection));
+            let playerSelection = prompt('Pick ya weapon, raah! Rock, paper, or scissors, ye\' say').toLowerCase();
+            let computerSelection = computerPlay();
+            (playRound(playerSelection, computerSelection));
+        }      
 
     </script>
 </body>
