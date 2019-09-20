@@ -11,9 +11,9 @@
     <button id='gameBtn' onclick="game()">Play a round!</button>
     <br>
     <div class="score">
-    <p id="playerScore">0</p>
+    <p id="playerScore"></p>
     <p>:</p>
-    <p id="computerScore">0</p>
+    <p id="computerScore"></p>
     </div>
 
     <script>
@@ -62,6 +62,7 @@
                         return 'Tie';                   
                     } else if (computerSelection === 'scissors') {
                         console.log('You won! Eat grapes and drink wine, champ!')
+                        console.log(++playerScore);
                         return 'Win';
                     } else {
                         console.log('You lost! On the plank yaaar go!')
@@ -78,6 +79,7 @@
                         return 'Tie';
                     } else {
                         console.log('You won! Eat grapes and drink wine, champ!')
+                        ++playerScore;
                         return 'Win';
                     }
                 }
@@ -85,6 +87,7 @@
                 if (playerSelection === 'paper') {
                     if (computerSelection === 'rock') {
                         console.log('You won! Eat grapes and drink wine, champ!')
+                        ++playerScore;
                         return 'Win'
                     } else if (computerSelection === 'scissors') {
                         console.log('You lost! On the plank yaaar go!')
