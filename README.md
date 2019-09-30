@@ -1,1 +1,1 @@
-Basic back-end functionality for a rock, paper, scissors game.
+Basic back-end functionality for a rock, paper, scissors game. Now with UI
