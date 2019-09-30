@@ -8,22 +8,27 @@
 <body>
     <p>Ohoi seamen and sailors, we have a challenger on deck. Load the canons and pick yar weapons!</p>
     <br>
-    <button id='gameBtn' onclick="game()">Play a round!</button>
+    <button id="btn">Play a round!</button>
     <br>
     <div class="score">
-    <p id="playerScore"></p>
-    <p>:</p>
-    <p id="computerScore"></p>
+        <p id="playerScore"></p>
+        <p>:</p>
+        <p id="computerScore"></p>
     </div>
+    <div id="logGame"></div>
 
     <script>
 
         let playerScore = 0 
-        document.getElementById("playerScore").innerText = playerScore;
+        document.getElementById("playerScore").textContent = playerScore;
         
-        let computerScore = 0 
-        document.getElementById("computerScore").innerText = computerScore;
+        let computerScore = 0
+        document.getElementById("computerScore").textContent = computerScore;
 
+        let btn = document.querySelector('#btn');
+        btn.addEventListener('click', () => {
+            game();
+        });
 
         function game() {
             function computerPlay() {
@@ -66,13 +71,13 @@
                         console.log('You won! Eat grapes and drink wine, champ!')
                         ++playerScore;
                         console.log(playerScore);
-                        document.getElementById('playerScore').innerText = playerScore;
+                        document.getElementById('playerScore').textContent = playerScore;
                         return 'Win';
                     } else {
                         console.log('You lost! On the plank yaaar go!')
                         ++computerScore;
                         console.log(computerScore);
-                        document.getElementById('computerScore').innerText = computerScore;
+                        document.getElementById('computerScore').textContent = computerScore;
                         return 'Lost';                    
                     }
                 }
@@ -81,7 +86,7 @@
                     if (computerSelection === 'rock') {
                         console.log('You lost! On the plank yaaar go!')
                         ++computerScore;
-                        document.getElementById('computerScore').innerText = computerScore;
+                        document.getElementById('computerScore').textContent = computerScore;
                         return 'Lost';
                     } else if (computerSelection === 'scissors') {
                         console.log('Tis a tie. Awkward.')
@@ -89,7 +94,7 @@
                     } else {
                         console.log('You won! Eat grapes and drink wine, champ!')
                         ++playerScore;
-                        document.getElementById('playerScore').innerText = playerScore;
+                        document.getElementById('playerScore').textContent = playerScore;
                         return 'Win';
                     }
                 }
@@ -98,12 +103,12 @@
                     if (computerSelection === 'rock') {
                         console.log('You won! Eat grapes and drink wine, champ!')
                         ++playerScore;
-                        document.getElementById('playerScore').innerText = playerScore;
+                        document.getElementById('playerScore').textContent = playerScore;
                         return 'Win'
                     } else if (computerSelection === 'scissors') {
                         console.log('You lost! On the plank yaaar go!')
                         ++computerScore;
-                        document.getElementById('computerScore').innerText = computerScore;
+                        document.getElementById('computerScore').textContent = computerScore;
                         return 'Lost'
                     } else {
                         console.log('Tis a tie. Awkward.')
@@ -116,7 +121,14 @@
             let computerSelection = computerPlay();
             console.log((playRound(playerSelection, computerSelection)));
 
-        }
+            if (computerScore < 5 && playerScore < 5) {
+                game();
+            } else if (computerScore === 5)  {
+                alert("you lost");
+            } else if (playerScore === 5) {
+                alert("you won");
+            }
+        };
 
     </script>
 </body>
